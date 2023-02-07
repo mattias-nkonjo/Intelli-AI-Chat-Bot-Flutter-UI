@@ -8,6 +8,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,8 +32,12 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('  tp1 Flutter AI'),
+        centerTitle: true,
+      ),
+      body: const Center(
         child: Text(' Hello I am tp1 Flutter AI'),
       ),
     );
