@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:p1_flutter_ai/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:p1_flutter_ai/src/constants/constants.dart';
+import 'package:p1_flutter_ai/src/routing/app_route.dart';
+import 'package:p1_flutter_ai/theme/pa1_flutter_ai_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,38 +12,29 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'p1 Flutter AI',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('  tp1 Flutter AI'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(' Hello I am tp1 Flutter AI'),
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final themeMode = ref.watch(themeNotifierProvider.notifier).mode;
+    return MaterialApp.router(
+      title: Strings.appName,
+      theme: P1FlutterAiTheme.lightModeAppTheme,
+      darkTheme: P1FlutterAiTheme.darkModeAppTheme,
+      themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
+      routeInformationParser: AppRouter.router.routeInformationParser,
+      routeInformationProvider: AppRouter.router.routeInformationProvider,
+      routerDelegate: AppRouter.router.routerDelegate,
     );
   }
 }
