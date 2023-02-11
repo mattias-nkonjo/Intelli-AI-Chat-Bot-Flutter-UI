@@ -5,7 +5,10 @@ class ConstRoutes {
   const ConstRoutes._();
 
   /// This Class defines all the routes
-  static String iai01 = 'iai01';
-  static String iai02 = 'iai02';
-  static String iai03 = 'iai03';
+  static const iai01 = 'iai01';
+  static const iai02 = 'iai02';
+  static const iai03 = 'iai03';
+  static const iai12 = 'iai12';
+  static const iai13 = 'iai13';
+  static const iai14 = 'iai14';
 }

@@ -29,7 +29,17 @@ class Strings {
       'Password should be at least 8 characters';
   static const passwordNotGreatThenFifteen =
       'Password should be at least 8 characters';
-
   static const recoverPassword = 'Recover Password ?';
   static const orContinueWith = ' Or continue with ';
+  static const verifyNumber = ' Verify Number ';
+
+  static const verifyPhoneNumber = 'Verify Phone Number';
+  static const pleaseEnterFourDigitNumber =
+      'Please enter the 4 digit code sent to \n +971 50 123 4567 through SMS';
+  static const didntReceiveCode = 'Didn’t receive a code? ';
+
+  static const wrongNumber = 'Wrong number';
+  static const resendSms = 'Resend SMS';
+  static const termsOfUseAndPrivacy =
+      'By continuing you’re indicating that you accept our Terms of Use and our Privacy Policy';
 }

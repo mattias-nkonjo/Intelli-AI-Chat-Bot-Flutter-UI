@@ -102,16 +102,9 @@ class _IAI03State extends ConsumerState<IAI03> {
                 ),
 
                 /// Sign In Buttons
-                ElevatedButton(
+                aiaElevatedButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorPalette.blackColor,
-                    minimumSize: const Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Text(Strings.signIn),
+                  label: Strings.signIUp,
                 ),
               ],
             ),

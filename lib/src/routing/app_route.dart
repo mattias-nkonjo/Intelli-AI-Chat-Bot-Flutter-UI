@@ -5,7 +5,7 @@ import 'package:p1_flutter_ai/src/routing/pages.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/verify-phone-number',
     routes: [
       GoRoute(
         path: '/',
@@ -23,6 +23,21 @@ class AppRouter {
             builder: (context, state) => const IAI02(),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/verify-phone-number',
+        name: ConstRoutes.iai12,
+        builder: (context, state) => const IAI12(),
+      ),
+      GoRoute(
+        path: '/verify-phone-email',
+        name: ConstRoutes.iai14,
+        builder: (context, state) => const IAI14(),
+      ),
+      GoRoute(
+        path: '/recover-password',
+        name: ConstRoutes.iai13,
+        builder: (context, state) => const IAI13(),
       ),
     ],
     errorPageBuilder: (context, state) => MaterialPage(
