@@ -12,26 +12,26 @@ class IAI13 extends ConsumerStatefulWidget {
 }
 
 class _IAI13State extends ConsumerState<IAI13> {
-  late final TextEditingController _password;
-  late final TextEditingController _verifyPassword;
-  late final TextEditingController _email;
-  late final TextEditingController _name;
+  late final TextEditingController _firstDigit;
+  late final TextEditingController _secondDigit;
+  late final TextEditingController _thirdDigit;
+  late final TextEditingController _fourthDigit;
 
   @override
   void initState() {
     super.initState();
-    _password = TextEditingController();
-    _email = TextEditingController();
-    _name = TextEditingController();
-    _verifyPassword = TextEditingController();
+    _firstDigit = TextEditingController();
+    _secondDigit = TextEditingController();
+    _thirdDigit = TextEditingController();
+    _fourthDigit = TextEditingController();
   }
 
   @override
   void dispose() {
-    _password.dispose();
-    _email.dispose();
-    _name.dispose();
-    _verifyPassword.dispose();
+    _firstDigit.dispose();
+    _secondDigit.dispose();
+    _thirdDigit.dispose();
+    _fourthDigit.dispose();
     super.dispose();
   }
 
@@ -42,75 +42,93 @@ class _IAI13State extends ConsumerState<IAI13> {
         gradient: ColorPalette.appbarGradient,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            constraints: const BoxConstraints.expand(height: 710),
-            decoration: BoxDecoration(
-              gradient: ColorPalette.backgroundGradient,
-            ),
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-              top: 20,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Column(
-                  children: const [
-                    Text('Verify Phone Number'),
-                    Text(
-                        'Please enter the 4 digit code sent to +971 50 123 4567 through SMS'),
-                  ],
-                ),
-                Form(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 30),
-                      nameTextFormField(
-                        controller: _name,
-                        label: Strings.name,
-                      ),
-                      const SizedBox(height: 10),
-                      emailTextFormField(
-                        controller: _email,
-                        label: Strings.email,
-                      ),
-                      const SizedBox(height: 10),
-
-                      ///  Password Text Form Field
-                      PasswordTextField(
-                        controller: _password,
-                        label: Strings.password,
-                      ),
-                      const SizedBox(height: 10),
-
-                      /// ReEnter Password Text Form Field
-                      PasswordTextField(
-                        controller: _verifyPassword,
-                        label: Strings.verifyPassword,
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 120,
-                ),
-
-                /// Sign In Buttons
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorPalette.blackColor,
-                    minimumSize: const Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: ColorPalette.backgroundGradient,
+          ),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              /// First Section
+              Column(
+                children: const [
+                  Text(
+                    Strings.verifyPhoneNumber,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: const Text(Strings.signIn),
-                ),
-              ],
-            ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    Strings.pleaseEnterFourDigitNumber,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+
+              /// Second Section
+              Column(
+                children: [
+                  Form(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            DigitTextFormField(controller: _firstDigit),
+                            DigitTextFormField(controller: _secondDigit),
+                            DigitTextFormField(controller: _thirdDigit),
+                            DigitTextFormField(controller: _fourthDigit),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(Strings.didntReceiveCode),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(Strings.resendSms),
+                      )
+                    ],
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      Strings.wrongNumber,
+                      style: TextStyle(
+                        color: ColorPalette.blackColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              /// Third Section
+              Column(
+                /// Verify Number Button
+                children: [
+                  aiaElevatedButton(
+                    onPressed: () {},
+                    label: Strings.verifyNumber,
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    Strings.termsOfUseAndPrivacy,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ),

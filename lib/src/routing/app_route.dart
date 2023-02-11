@@ -5,7 +5,7 @@ import 'package:p1_flutter_ai/src/routing/pages.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: '/verify-phone-number',
+    initialLocation: '/verify-phone-email',
     routes: [
       GoRoute(
         path: '/',
