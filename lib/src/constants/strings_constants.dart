@@ -30,8 +30,10 @@ class Strings {
   static const passwordNotGreatThenFifteen =
       'Password should be at least 8 characters';
   static const recoverPassword = 'Recover Password ?';
+  static const passwordRecover = 'Recover Password';
   static const orContinueWith = ' Or continue with ';
   static const verifyNumber = ' Verify Number ';
+  static const confirm = ' Confirm';
   static const verifyEmail = ' Verify Email ';
 
   static const verifyPhoneNumber = 'Verify Phone Number';
@@ -45,4 +47,8 @@ class Strings {
   static const resendEmail = 'resend Email';
   static const termsOfUseAndPrivacy =
       'By continuing you’re indicating that you accept our Terms of Use and our Privacy Policy';
+  static const recoveryPasswordMessage =
+      'Select which contact details should we use to reset your password';
+  static const viaSms = 'via SMS';
+  static const viaEmail = 'via Email';
 }

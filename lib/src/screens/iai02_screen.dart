@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:p1_flutter_ai/src/components/components.dart';
 import 'package:p1_flutter_ai/src/constants/constants.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+import 'package:p1_flutter_ai/src/routing/const_routes.dart';
 
 class IAI02 extends ConsumerStatefulWidget {
   const IAI02({super.key});
@@ -77,7 +79,7 @@ class _IAI02State extends ConsumerState<IAI02> {
 
                 /// Recover Password Text Button
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => context.pushNamed(ConstRoutes.iai13),
                   style: TextButton.styleFrom(
                     alignment: Alignment.centerRight,
                     minimumSize: const Size(double.infinity, 20),

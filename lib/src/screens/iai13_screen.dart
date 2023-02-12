@@ -4,129 +4,79 @@ import 'package:p1_flutter_ai/src/components/components.dart';
 import 'package:p1_flutter_ai/src/constants/constants.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 
-class IAI13 extends ConsumerStatefulWidget {
+class IAI13 extends ConsumerWidget {
   const IAI13({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _IAI13State();
-}
-
-class _IAI13State extends ConsumerState<IAI13> {
-  late final TextEditingController _firstDigit;
-  late final TextEditingController _secondDigit;
-  late final TextEditingController _thirdDigit;
-  late final TextEditingController _fourthDigit;
-
-  @override
-  void initState() {
-    super.initState();
-    _firstDigit = TextEditingController();
-    _secondDigit = TextEditingController();
-    _thirdDigit = TextEditingController();
-    _fourthDigit = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _firstDigit.dispose();
-    _secondDigit.dispose();
-    _thirdDigit.dispose();
-    _fourthDigit.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: NewGradientAppBar(
         gradient: ColorPalette.appbarGradient,
+        title: const Text(
+          Strings.passwordRecover,
+          style: TextStyle(color: ColorPalette.blackColor),
+        ),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
             gradient: ColorPalette.backgroundGradient,
           ),
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-          ),
+          padding: const EdgeInsets.all(20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              /// First Section
+              Image.asset(ImagesUrl.recoveryImage),
               Column(
-                children: const [
-                  Text(
-                    Strings.verifyPhoneNumber,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    Strings.pleaseEnterFourDigitNumber,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-
-              /// Second Section
-              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Form(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            DigitTextFormField(controller: _firstDigit),
-                            DigitTextFormField(controller: _secondDigit),
-                            DigitTextFormField(controller: _thirdDigit),
-                            DigitTextFormField(controller: _fourthDigit),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(Strings.didntReceiveCode),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(Strings.resendSms),
-                      )
-                    ],
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      Strings.wrongNumber,
-                      style: TextStyle(
-                        color: ColorPalette.blackColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              /// Third Section
-              Column(
-                /// Verify Number Button
-                children: [
-                  aiaElevatedButton(
-                    onPressed: () {},
-                    label: Strings.verifyNumber,
+                  const Text(
+                    Strings.recoveryPasswordMessage,
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    Strings.termsOfUseAndPrivacy,
-                    textAlign: TextAlign.center,
-                  )
+                  Card(
+                    elevation: 2.0,
+                    color: ColorPalette.whiteColor,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 2,
+                        color: ColorPalette.blueColor,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 15),
+                      leading: Image.asset(ImagesUrl.sms),
+                      title: const Text(Strings.viaSms),
+                      subtitle: const Text('+1 111 ******99'),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Card(
+                    elevation: 2.0,
+                    color: ColorPalette.whiteColor,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        width: 2,
+                        color: ColorPalette.whiteColor,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 15),
+                      leading: Image.asset(ImagesUrl.email),
+                      title: const Text(Strings.email),
+                      subtitle: const Text('and***ey@yourdomain.com'),
+                    ),
+                  ),
                 ],
+              ),
+              aiaElevatedButton(
+                onPressed: () {},
+                label: Strings.confirm,
               ),
             ],
           ),
